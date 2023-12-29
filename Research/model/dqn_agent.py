@@ -27,7 +27,7 @@ class DQNAgent:
 
     def choose_action(self, state):  
 
-        if random.uniform(-1, 3) < self.epsilon:
+        if random.uniform(-1, 1) < self.epsilon:
             #print('explor')
             action = random.randint(0, self.num_actions - 1)  # Choose a random action
 

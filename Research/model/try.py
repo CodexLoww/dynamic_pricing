@@ -1,6 +1,7 @@
 import torch
 import os
 import pandas as pd
+from train import train_agent
 from environment import PricingEnvironment
 from dqn_agent import DQNAgent
 from simulate_episode import simulate
@@ -34,7 +35,7 @@ def get_baseline_price():
     frame.pack(pady=20)
 
     label = ttk.Label(frame, text="Enter Baseline Price:")
-    label.grid(row=0, column=0, padx=10, pady=5)
+    label.grid(row=0, column=0, padx=10, pady=15)
 
     baseline_price_entry = ttk.Entry(frame)
     baseline_price_entry.grid(row=0, column=1, padx=10, pady=5)
@@ -59,7 +60,7 @@ def get_baseline_price():
                 print("\nModel loaded successfully!\n")
             else:
                 print("No model found or the model file is empty.")
-
+            ## train_agent(agent, env)
             simulate(env, agent)
         else:
             print("Baseline Price input canceled or not provided.")
@@ -73,5 +74,5 @@ file_path = './Shopee-Product-20oz-September-2023-FINAL.xlsx'
 
 data = load_dataset(file_path)
 processed_data = preprocess_data(data.copy())
-
+print('scaled: ', processed_data)
 get_baseline_price()

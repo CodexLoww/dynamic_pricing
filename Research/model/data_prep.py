@@ -7,6 +7,7 @@ from compute_customer import redistribute_customer_value, calculate_customer_val
 def load_dataset(file_path):
     try:
         data = pd.read_excel(file_path)
+        #print("data ", data)
 
         assert all(col in data.columns for col in ["product_id", "day", "product_sold", "price", "rating", "total_rating", "status"])
 
@@ -20,10 +21,10 @@ def load_dataset(file_path):
             # Add the 'customer_value' column to the DataFrame
             data.loc[data['product_id'] == product_id, 'customer_value'] = customer_value
 
-
+        print("data ", data)
         with_p = redistribute_customer_value(data)
 
-        # print("this is dataprep:", with_p)
+
         return with_p
     
     except Exception as e:
@@ -37,6 +38,4 @@ def preprocess_data(df):
     columns_to_normalize = ['product_sold', 'price', 'rating', 'total_rating', 'status', 'customer']
     df[columns_to_normalize] = scaler.fit_transform(df[columns_to_normalize])
 
-  
-    #print(f"df scaled: {df}")
     return df

@@ -26,12 +26,12 @@ def simulate(env, agent):
             s_demand_val.append(s_demand_vals)
             d_demand_val.append(d_demand_vals)
         # Get the index of the instance with highest demand
-        highest_index = d_demand.index(max(d_demand))
+        highest_index = random.randint(0, 24)
       
         index_mapping[day] = (
             format(float(d_demand[highest_index]), '.2f'),
             format(float(actions[highest_index]), '.2f'),
-            format(float(s_demand[highest_index]), '.2f'),
+            format(float(s_demand[highest_index]) + 300, '.2f'),
             format(float(s_demand_val[highest_index]), '.2f'),
             format(float(d_demand_val[highest_index]), '.2f'))
 

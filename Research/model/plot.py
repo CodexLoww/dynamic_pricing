@@ -10,8 +10,8 @@ def display_prices_graph(prices_as_floats, initial_price, dynamic_daily_revenues
 
     # Subplot 1 for Prices - Dynamic vs Static
     ax1 = fig.add_subplot(211)
-    ax1.plot(days, prices_as_floats, marker='o', color='blue', label='Dynamic Pricing')
-    ax1.plot(days, [initial_price] * len(prices_as_floats), marker='x', color='green', label='Static Pricing')
+    ax1.plot(days, prices_as_floats, marker='o', color='#0000FF', label='Dynamic Pricing')
+    ax1.plot(days, [initial_price] * len(prices_as_floats), marker='o', color='#008000', label='Static Pricing')
     ax1.set_xlabel('Day')
     ax1.set_ylabel('Price')
     ax1.set_title('Price Comparison between Dynamic and Static Pricing')
@@ -20,8 +20,8 @@ def display_prices_graph(prices_as_floats, initial_price, dynamic_daily_revenues
 
     # Subplot 2 for Revenues - Dynamic vs Static
     ax2 = fig.add_subplot(212)
-    ax2.plot(days, dynamic_daily_revenues, marker='o', color='orange', label='Dynamic Revenue')
-    ax2.plot(days, static_daily_revenues, marker='x', color='red', label='Static Revenue')
+    ax2.plot(days, dynamic_daily_revenues, marker='o', color='#87CEEB', label='Dynamic Revenue')
+    ax2.plot(days, static_daily_revenues, marker='o', color='#90EE90', label='Static Revenue')
     ax2.set_xlabel('Day')
     ax2.set_ylabel('Revenue')
     ax2.set_title('Revenue Comparison between Dynamic and Static Pricing')
@@ -38,14 +38,14 @@ def display_prices_graph(prices_as_floats, initial_price, dynamic_daily_revenues
     canvas.draw()
     canvas.get_tk_widget().pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
-    text_frame = tk.Frame(root, width=500, height=400, bg='lightgray')  # Left space for text
-    text_frame.pack(side=tk.LEFT, anchor=tk.NW)
+    text_frame = tk.Frame(root, width=500, height=750, bg="white")  # Left space for text
+    text_frame.pack(side=tk.LEFT, fill=tk.BOTH, anchor=tk.NW)
 
     # Create a Text widget and Scrollbar
-    text_widget = tk.Text(text_frame, wrap="none", font=("Times New Roman", 9))
+    text_widget = tk.Text(text_frame, wrap="none", font=("Times New Roman", 12))
     scrollbar = Scrollbar(text_frame, command=text_widget.yview)
     text_widget.config(yscrollcommand=scrollbar.set)
-    text_widget.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+    text_widget.pack(side=tk.TOP, fill=tk.X, expand=True)
     scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
     dynamic_text = "Dynamic Pricing Breakdown\n"
@@ -70,5 +70,5 @@ def display_prices_graph(prices_as_floats, initial_price, dynamic_daily_revenues
     # Button to trigger the dialog box
     prediction_button = tk.Button(root, text="Show Prediction for Day 31", command=show_prediction)
     prediction_button.pack()
-    prediction_button.place(relx=0.5, rely=0.85, anchor=tk.SW)
+    prediction_button.place(relx=0.125, rely=.95, anchor=tk.SW)
     root.mainloop()

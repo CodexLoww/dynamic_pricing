@@ -11,7 +11,7 @@ class PricingEnvironment:
         self.total_days = 30
         self.current_day = 0
         self.current_product_index = 0
-        self.total_products = 25
+        self.total_products = 90
         # print(f"df: {self.products_data}")
 
     def reset(self, current_day):

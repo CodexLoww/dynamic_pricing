@@ -41,7 +41,7 @@ def predict_sales(model, baseline_price, average_customer_value):
 
     return predicted_sales, new_customer_value
 
-def predict_customer(baseline_price, data, train=False):
+def predict_customer(baseline_price, data, train=True):
     if train:
         model = train_model(data)
         save_model(model)  # Save the trained model
@@ -85,5 +85,5 @@ if __name__ == "__main__":
     #print(with_p.to_string(index=False))
     baseline_price = 1900
   
-    result = predict_customer(baseline_price, with_p, train=False)
+    result = predict_customer(baseline_price, with_p, train=True)
     print("Predicted sales for the new product at baseline price:", result)
